@@ -1,0 +1,25 @@
+<div class = "container">
+<%= render "shared/header" %>
+<div class = "container_index">
+  <h1>検索結果：<%= Post.count %></h1>
+  
+  
+  <div class = "overview_index">
+    <% @posts.each do |post| %>
+    <div class = "flame_index">
+      <%= link_to post_path(post), class:"link" do %>
+      <div class = "onepart_index_up">
+        <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x170' %>
+      </div>
+      <div class = "onepart_index_down">
+        <p class = "name_index"><%= post.name %></p>
+        <p class = "address_index"><%= post.address %></p>
+        <p class = "price_index">¥<%= post.price %></p>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+<%= render 'shared/footer' %>
+</div>
