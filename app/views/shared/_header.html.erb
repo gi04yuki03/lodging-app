@@ -7,4 +7,23 @@
          </a>
       </div>
    </div>
+   <div class ="header-sub">
+   　　<% if user_signed_in? %> 
+        <div><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></div>
+        <div><%= link_to "トップ", root_path, class: "text-white" %></div>
+        <div><%= link_to "投稿する", new_post_path, class: "text-white" %></div>
+        <div><%= link_to "投稿一覧", posts_path, class: "text-white" %></div>
+        <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div>
+        <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div> 
+      <% else %>
+        <div>
+           <%= link_to new_user_registration_path do %>
+              <h2 class="btn btn-primary mr-2">新規登録</h2>
+           <% end %>
+           <%= link_to new_user_session_path do %>
+              <h2 class="btn btn-success ml-2">ログイン</h2>
+           <% end %>
+        </div>
+      <% end %> 
+   </div>
 </div>
