@@ -1,20 +1,21 @@
-<div class = "container">
 <%= render "shared/header" %>
-<div class = "container_index">
-  <h1>検索結果：<%= Post.count %></h1>
+<div class = "container">
+  <h2 class ="m-4">検索結果：<%= Post.count %></h2>
   
   
-  <div class = "overview_index">
+  <div class = "row">
     <% @posts.each do |post| %>
-    <div class = "flame_index">
-      <%= link_to post_path(post), class:"link" do %>
-      <div class = "onepart_index_up">
-        <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x170' %>
-      </div>
-      <div class = "onepart_index_down">
-        <p class = "name_index"><%= post.name %></p>
-        <p class = "address_index"><%= post.address %></p>
-        <p class = "price_index">¥<%= post.price %></p>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+      <%= link_to post_path(post), class:"text-decoration-none" do %>
+      <div class = "flame_index">
+        <div class = "img-container">
+          <%= attachment_image_tag post, :image, format: 'jpeg' %>
+        </div>
+        <div class = "index_down">
+          <p class = "font-weight-bold text-secondary h3"><%= post.name %></p>
+          <p class = "h5 text-body"><%= post.address %></p>
+          <p class = "h5 text-right text-body">¥<%= post.price %></p>
+        </div>
       </div>
       <% end %>
     </div>
@@ -22,4 +23,3 @@
   </div>
 
 <%= render 'shared/footer' %>
-</div>

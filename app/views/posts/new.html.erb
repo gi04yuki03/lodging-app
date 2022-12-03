@@ -1,47 +1,58 @@
+
 <%= render "shared/header" %>
-<div class = "main">
-  <h1>ルーム情報登録</h1>
-  
-  <% if @post.errors.any? %>
- <div class="error">
-   <%= @post.errors.count %>件のエラーが発生しました
-   <% @post.errors.full_messages.each do |message| %>
-    <%= message %>
-   <% end %>
+<div class="new-all container-fiuld">
+ <div class="row">
+  <div class="new-sub col-lg-2 new-sub-pc d-lg-block d-none">
+   <ul>
+     <li class="active"><a href="/posts/new">基本情報</a></li>
+   </ul>
   </div>
- <% end %>
- 
+  <div class="new-sub col-lg-2 new-sub-mobile d-lg-none">
+   <ul>
+     <li class="active"><a href="/posts/new">基本情報</a></li>
+   </ul>
+  </div>
   
-  <%= form_with model: @post, local:true do |f| %>
+  <div class="col-lg-10 room-main">
+   <% if @post.errors.any? %>
+   <div class="error">
+    <%= @post.errors.count %>件のエラーが発生しました
+    <% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+   </div>
+   <% end %>
+   
+   <div class ="new-main-inner p-5">
+   <%= form_with model: @post, local:true do |f| %>
   
-  <table>
-     <tr>
+   <table>
+     <tr class ="new-main-part">
        <th><%= f.label :name ,"ルーム名" %></th>
-       <td><%= f.text_field :name %></td>
+       <td><%= f.text_field :name ,class: "form-control mb-4 col-md-9" , placeholder: "ルーム名を入力"%></td>
      </tr>
- 
-     <tr>
+     <tr class ="new-main-part">
        <th><%= f.label :introduction ,"ルーム紹介" %></th>
-       <td><%= f.text_area :introduction %></td>
+       <td><%= f.text_area :introduction ,class: "form-control mb-4 col-md-9" , placeholder: "ルーム説明を入力" %></td>
      </tr>
- 
-     <tr>
+     <tr class ="new-main-part">
        <th><%= f.label :price ,"料金" %></th>
-       <td><%= f.text_field :price %></td>
+       <td><%= f.text_field :price ,class: "form-control mb-4 col-md-9" , placeholder: "一日あたりの料金を入力" %></td>
      </tr>
- 
-     <tr>
+     <tr class ="new-main-part">
        <th><%= f.label :address ,"住所" %></th>
-       <td><%= f.text_field :address %></td>
+       <td><%= f.text_field :address ,class: "form-control mb-4 col-md-9" , placeholder: "住所を入力" %></td>
      </tr>
-     
-     <tr>
+     <tr class ="new-main-part">
        <th><%= f.label :image ,"ルーム画像" %></th>
-       <td><%= f.attachment_field :image %></td>
+       <td><%= f.attachment_field :image ,class: "mb-4 col-md-9" %></td>
      </tr>
    </table>
-   <%= f.submit '投稿' %>
+   <%= f.submit '投稿' , class: "btn btn-primary mr-2" %>
    <% end %>
+   </div>
+  </div>
+ </div>
 </div>
 
 <%= render 'shared/footer' %>

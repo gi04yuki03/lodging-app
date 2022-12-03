@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       flash[:notice] = "ルームを新規登録しました"
        redirect_to "/show"
        else
-       render "/new"
+       render "new"
       end
   end
   

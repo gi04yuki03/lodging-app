@@ -1,21 +1,29 @@
-<div class="header">
-   <div class ="header-main">
-      <div class ="header-logo">
-         <%= link_to top_path do %>
-           <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="ロゴ画像">
-           <% end %>
-         </a>
-      </div>
-   </div>
-   <div class ="header-sub">
-   　　<% if user_signed_in? %> 
-        <div><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></div>
-        <div><%= link_to "トップ", root_path, class: "text-white" %></div>
-        <div><%= link_to "投稿する", new_post_path, class: "text-white" %></div>
-        <div><%= link_to "投稿一覧", posts_path, class: "text-white" %></div>
-        <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div>
-        <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div> 
-      <% else %>
+<nav class="navbar bg-dark">
+
+  <div class ="header-logo .justify-content-start">
+    <%= link_to top_path do %>
+      <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="ロゴ画像">
+    <% end %>
+  </div>
+
+  <div class ="header-sub .justify-content-end">
+    <% if user_signed_in? %>
+    
+<div class="dropdown"> 
+  <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle"  
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      メニューを開く
+  </button>
+  <div class="dropdown-menu" aria-labelledby="btnOpenMenu">
+              <button class="dropdown-item" type="button"><%= link_to "トップ", root_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "投稿する", new_post_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "投稿一覧", posts_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "マイページ", user_path(current_user.id) %></button>
+              <button class="dropdown-item" type="button"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+ 
+  </div>
+  </div>
+    <% else %>
         <div>
            <%= link_to new_user_registration_path do %>
               <h2 class="btn btn-primary mr-2">新規登録</h2>
@@ -24,6 +32,6 @@
               <h2 class="btn btn-success ml-2">ログイン</h2>
            <% end %>
         </div>
-      <% end %> 
-   </div>
-</div>
+    <% end %>
+  </div>
+</nav>

@@ -1,21 +1,36 @@
-<div class = "container">
 <%= render "shared/header" %>
-  <div class = "show">
-    <div class = "detail">
-      <p class = "image_show"><%= attachment_image_tag @post, :image, format: 'jpeg', size: "750x425" %></p>
-      <p class = "name_show"><%= @post.name %></p>
-      <p class = "address_show"><%= @post.address %></p>
-      <p class = "introduction_show"><%= @post.introduction %></p>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "detail col-md-8">
+      <p class = "img-container"><%= attachment_image_tag @post, :image, format: 'jpeg' %></p>
+      <p class = "my-5 font-weight-bold h4"><%= @post.name %></p>
+      <p class = "h7 my-4"><%= @post.address %></p>
+      <p class = "introduction_show h5 my-5"><%= @post.introduction %></p>
     </div>
-    <div class = "reserve">
-      <p class = "price_show">¥<%= @post.price %>/日</p>
+    <div class = "col-md-4">
+      <div class = "reserve">
+        <p class = "h4 mb-4">¥<%= @post.price %>/日</p>
+        <div class = "reserve-form">
+          <form action="/reservations/new" accept-charset="UTF-8" method="get">
+            <label for="start_date">開始日</label>
+            <input type="date" name="start_date" id="start_date" value="" class="form-control mb-4">
+            <label for="end_date">終了日</label>
+            <input type="date" name="end_date" id="end_date" value="" class="form-control mb-4">
+            <label for="person_num">人数</label>
+            <input type="number" name="person_num" id="person_num" value="" class="form-control mb-4">
+            <input type="hidden" name="room_id" id="room_id" value="1">
+            <input type="submit" name="commit" value="予約する" class="btn btn-primary form-control" data-disable-with="予約する">
+          </form>
+        </div>
+      </div>
     </div>
     <div class = "choice">
       <% if @post.user == current_user %>
       <%= link_to '編集する', edit_post_path(@post.id) %><br>
       <%= link_to '削除する', post_path(@post.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </div>
   </div> 
-  
-  <%= render 'shared/footer' %>
-  </div>
+</div>
+<%= render 'shared/footer' %>
