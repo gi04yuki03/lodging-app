@@ -1,0 +1,25 @@
+<%= render "shared/header" %>
+<div class = "container">
+  <h2 class ="m-4">検索結果：<%= @posts.count %></h2>
+  
+  
+  <div class = "row">
+    <% @posts.each do |post| %>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+      <%= link_to post_path(post), class:"text-decoration-none" do %>
+      <div class = "flame_index">
+        <div class = "img-container">
+          <%= attachment_image_tag post, :image, format: 'jpeg' %>
+        </div>
+        <div class = "index_down">
+          <p class = "font-weight-bold text-secondary h3"><%= post.name %></p>
+          <p class = "h5 text-body"><%= post.address %></p>
+          <p class = "h5 text-right text-body">¥<%= post.price %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+<%= render 'shared/footer' %>

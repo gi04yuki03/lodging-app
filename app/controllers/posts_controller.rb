@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
   def index
-  @posts = Post.all
+    @posts = Post.all
   end
   
   def new
@@ -33,6 +33,18 @@ class PostsController < ApplicationController
       redirect_to post_path(post.id)
     else
       render "/edit"
+    end
+  end
+  
+  def search
+    if params[:area] != nil && params[:keyword] != nil
+      @posts = Post.where(params[:keyword]).where(params[:area])
+    elsif params[:keyword] != nil
+      @posts = Post.where(params[:keyword])
+    elsif params[:area] != nil
+      @posts = Post.where(address: params[:area])
+    else
+      @posts = Post.all
     end
   end
   
