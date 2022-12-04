@@ -13,6 +13,11 @@ html {
   margin-top: 20px;
 }
 
+.container-fiuld {
+  margin-bottom: 120px;
+  margin-top: 20px;
+}
+
 .navbar {
   width : 100%;
 }
@@ -81,30 +86,38 @@ textarea{
   width : 100%;
 }
 
-.new-sub-pc a {
+.new-sub-pc {
+  width: 100%;
+}
+.new-sub-pc-nav {
   border-right: 3px solid #4a90e2;
 }
-.new-sub-mobile a {
+.new-sub-mobile-nav {
   border-bottom: 3px solid #4a90e2;
 }
 
+.new-main {
+  border-left: 2px solid #e2e2e2;
+}
 .new-main-inner {
   max-width: 880px;
-  background-color: #fff;
   border: 1px solid #000;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
-.new-main-part {
-  border-bottom: 1px solid #eaedef;
-  padding: 20px;
-  margin: 0 15px;
-  font-size: 16px;
+.new-main-inner td,th,h5 {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 15px 0;
 }
-
 .new-main-inner th {
-  margin-left : 20px;
-  margin-right : 40px;
+  width: 200px;
+}
+.new-main-inner table {
+  width: 100%;
+}
+.new-main-inner a {
+  font-size: 11px;
+  border-radius: 10px;
 }
 
 .top-main {

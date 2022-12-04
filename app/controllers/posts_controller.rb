@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "ルームを新規登録しました"
-       redirect_to "/show"
+       redirect_to :posts
        else
        render "new"
       end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:name, :introduction, :price, :address, :image)
+    params.require(:post).permit(:name, :introduction, :price, :address, :image).merge(user_id:current_user.id)
   end
   
 end
