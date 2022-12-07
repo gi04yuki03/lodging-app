@@ -1,7 +1,15 @@
-<div>
-<%= link_to post_path(post) do %>
-  <p class="caption"><%= post.user.name %></p>  #この行を追記
-  <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x200' %>
-  <p class="caption mb-0"><%= post.name %></p>
-<% end %>
-</div>
+
+
+<div class ="new-main-inner px-5 py-4 my-4">
+    <h5>ルーム情報登録</h5>
+    <table class ="new-main-part">
+     <tr>
+       <th>メールアドレス</th>
+       <td><%= @user.name %></td>
+     </tr>
+     <tr>
+       <th>パスワード</th>
+       <td>********</td>
+     </tr>
+   </table>
+   </div>

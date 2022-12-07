@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class = "choice container">
+    <div class = "choice">
       <% if @post.user == current_user %>
       <%= link_to '編集する', edit_post_path(@post.id) %><br>
       <%= link_to '削除する', post_path(@post.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>

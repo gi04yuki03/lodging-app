@@ -6,6 +6,7 @@ html {
   margin: 0px;
   padding: 0px;
   text-decoration: none;
+  list-style: none;
 }
 
 .container {
@@ -88,12 +89,27 @@ textarea{
 
 .new-sub-pc {
   width: 100%;
+  line-height: 2;
 }
 .new-sub-pc-nav {
   border-right: 3px solid #4a90e2;
+  font-size: 20px;
+}
+.new-sub-mobile {
+  display:flex;
+}
+.sub-mobile-nav {
+  text-align: match-parent;
+  display: inline-block;
 }
 .new-sub-mobile-nav {
   border-bottom: 3px solid #4a90e2;
+  font-size: 20px;
+}
+.new-sub-pc-nav-none,.new-sub-mobile-nav-none {
+  color: black;
+  border: none;
+  font-size: 20px;
 }
 
 .new-main {

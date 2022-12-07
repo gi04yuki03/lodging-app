@@ -38,14 +38,22 @@ class PostsController < ApplicationController
   
   def search
     if params[:area] != nil && params[:keyword] != nil
-      @posts = Post.where(params[:keyword]).where(params[:area])
+      @posts = Post.where('price LIKE ? or name LIKE ? or introduction LIKE ? or address LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%").where('address LIKE(?)', "%#{params[:area]}%")
     elsif params[:keyword] != nil
-      @posts = Post.where(params[:keyword])
+      @posts = Post.where('price LIKE ? or name LIKE ? or introduction LIKE ? or address LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    elsif params[:keyword] != nil
     elsif params[:area] != nil
-      @posts = Post.where(address: params[:area])
+      @posts = Post.where('address LIKE ?', "%#{params[:area]}%")
     else
       @posts = Post.all
     end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "スケジュールをを削除しました"
+    redirect_to :posts
   end
   
   

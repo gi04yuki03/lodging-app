@@ -1,0 +1,55 @@
+<%= render "shared/header" %>
+
+
+<div class="new-all container-fiuld">
+ <div class="row">
+  <div class="new-sub col-lg-2 new-sub-pc d-lg-block d-none p-3">
+   <ul>
+     <li class="active float-right"><%= link_to "アカウント", user_path(current_user.id), class: "new-sub-pc-nav text-nowrap p-2 ml-4 text-decoration-none" %></li>
+     <li class="active float-right"><%= link_to "プロフィール", user_path(current_user.id), class: "new-sub-pc-nav-none text-nowrap p-2 ml-4 text-decoration-none" %></li>
+   </ul>
+  </div>
+  <div class="new-sub col-lg-2 new-sub-mobile d-lg-none ml-3">
+   <ul>
+     <li class="active sub-mobile-nav"><%= link_to "アカウント", user_path(current_user.id), class: "new-sub-mobile-nav m-2 pb-2 text-decoration-none" %></li>
+     <li class="active sub-mobile-nav"><%= link_to "プロフィール", user_path(current_user.id), class: "new-sub-mobile-nav-none m-2 pb-2 text-decoration-none" %></li>
+   </ul>
+  </div>
+ <div class="col-lg-10 new-main">
+   <% if @user.errors.any? %>
+   <div class="error">
+    <%= @user.errors.count %>件のエラーが発生しました
+    <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+   </div>
+   <% end %>
+   
+   <div class ="new-main-inner px-5 py-4 my-4">
+   <%= form_with model: @user, local:true do |f| %>
+    <h5>プロフィール</h5>
+    <div>
+   <%= attachment_image_tag @user, :profile_image, format: 'jpeg', size: "100x100", class: "mb-3 profile-img" %>
+    </div>
+    <table class ="new-main-part">
+     <tr>
+       <th><%= f.label :profile_image ,"アイコン画像" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <td><%= f.attachment_field :profile_image ,class: "my-2 col-md-9" %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :name ,"名前" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <td><%= f.text_field :name ,class: "form-control my-2 col-md-9" , placeholder: "名前を入力" %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :profile ,"自己紹介" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <td><%= f.text_area :profile ,class: "form-control my-2 col-md-9" , placeholder: "自己紹介を入力" %></td>
+     </tr>
+   </table>
+   <%= f.submit '更新' , class: "btn btn-primary mt-3" %>
+   <% end %>
+   </div>
+  </div>
+ </div>
+</div>
+
+<%= render 'shared/footer' %>
