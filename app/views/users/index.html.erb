@@ -1,15 +1,31 @@
+<%= render "shared/header" %>
 
-
-<div class ="new-main-inner px-5 py-4 my-4">
-    <h5>ルーム情報登録</h5>
+<div>
+    <h5>登録済みルーム一覧</h5>
     <table class ="new-main-part">
+   <thead>
      <tr>
-       <th>メールアドレス</th>
-       <td><%= @user.name %></td>
+       <th>ルーム画像</th>
+       <th>ルーム名</th>
+       <th>ルーム紹介</th>
+       <th>料金</th>
+       <th>作成日</th>
      </tr>
-     <tr>
-       <th>パスワード</th>
-       <td>********</td>
-     </tr>
-   </table>
-   </div>
+   </thead>
+   <tbody>
+     <% @posts.each do |post| %>
+     <%= link_to post_path(post) do %>
+       <tr>
+         <td><%= attachment_image_tag post, :image, format: 'jpeg', size: "100x100" %></td>
+         <td><%= post.user.name %></td>
+         <td><%#= post.user.introduction %></td>
+         <td><%#= post.user.price %></td>
+         <td><%= post.user.updated_at.to_s(:datetime2_jp) %></td>
+       </tr>
+     <% end %>
+     <% end %>
+   </tbody>
+ </table>
+</div>
+   
+<%= render 'shared/footer' %>

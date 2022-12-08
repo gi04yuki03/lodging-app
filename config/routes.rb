@@ -9,4 +9,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :posts do
+    resources :reservations
+  end 
+  
 end

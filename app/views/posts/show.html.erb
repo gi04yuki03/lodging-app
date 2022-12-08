@@ -12,16 +12,16 @@
       <div class = "reserve">
         <p class = "h4 mb-4">¥<%= @post.price %>/日</p>
         <div class = "reserve-form">
-          <form action="/reservations/new" accept-charset="UTF-8" method="get">
+          <%= form_for [@post, @post.reservations.new] do |f| %>
+          <%= f.hidden_field :post_id, value: @post.id %>
             <label for="start_date">開始日</label>
-            <input type="date" name="start_date" id="start_date" value="" class="form-control mb-4">
+             <%= f.text_field  :start_date,  :class => 'datepicker' %>
             <label for="end_date">終了日</label>
-            <input type="date" name="end_date" id="end_date" value="" class="form-control mb-4">
+            <%= f.text_field :end_date, :class => 'datepicker' %>
             <label for="person_num">人数</label>
-            <input type="number" name="person_num" id="person_num" value="" class="form-control mb-4">
-            <input type="hidden" name="room_id" id="room_id" value="1">
-            <input type="submit" name="commit" value="予約する" class="btn btn-primary form-control" data-disable-with="予約する">
-          </form>
+            <%= f.text_field :person_num %>
+            <%= f.submit "予約する", class: "btn btn-primary form-control" %> 
+            <% end %>
         </div>
       </div>
     </div>

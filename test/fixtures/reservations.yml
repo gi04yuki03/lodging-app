@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  post: one
+  start_date: 2022-12-08 11:17:24
+  end_date: 2022-12-08 11:17:24
+
+two:
+  user: two
+  post: two
+  start_date: 2022-12-08 11:17:24
+  end_date: 2022-12-08 11:17:24

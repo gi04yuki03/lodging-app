@@ -69,3 +69,10 @@ gem 'devise-i18n'
 
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+
+gem 'pry-rails'
+
+gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+
+gem 'rake', '< 11.0'
