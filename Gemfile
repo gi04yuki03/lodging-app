@@ -72,7 +72,7 @@ gem 'jquery-rails'
 
 gem 'pry-rails'
 
-gem 'bootstrap3-datetimepicker-rails'
-gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap4-datetime-picker-rails'
+gem 'momentjs-rails'
 
 gem 'rake', '< 11.0'

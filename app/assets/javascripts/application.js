@@ -22,4 +22,4 @@
 //= require_tree .
 
 //= require moment
-//= require bootstrap-datetimepicker
+//= require tempusdominus-bootstrap-4.js

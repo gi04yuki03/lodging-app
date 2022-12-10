@@ -1,20 +1,11 @@
 class ReservationsController < ApplicationController
+  
   def create
-    if @reservation = current_user.reservations.create(reservation_params)
-      start_date = Date.parse(reservation_params[:start_date])
-      end_date = Date.parse(reservation_params[:end_date])
-      days = (end_date - start_date).to_i + 1
-  
-      @reservation = current_user.reservations.build(reservation_params)
-      @reservation.post = post
-      @reservation.price = post.price
-      @reservation.total = post.price * days * person_num
-      @reservation.save
-  
-      flash[:notice] = "予約が完了しました。"
-      redirect_to "/show"
+    @reservation = Reservation.new(reservation_params)
+    if @reservation.save
+      redirect_to  action: :show, id: @reservation.id
     else
-      render show_post_path
+      render posts_path
     end
   end
   
@@ -24,8 +15,8 @@ class ReservationsController < ApplicationController
   
   private
 
- def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :post_id)
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :person_num).merge(post_id: params[:post_id], user_id:current_user.id)
   end 
-  
+
 end

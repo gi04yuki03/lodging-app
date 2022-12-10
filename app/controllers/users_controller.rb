@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    @user = current_user
-    @posts = @user.posts
-  end
 
   def show
     @user = User.find(params[:id])
@@ -17,6 +13,17 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+
+  def reservation
+    @user = current_user
+    @reservations = @user.reservations
+  end
+  
+  def posted
+    @user = current_user
+    @posts = @user.posts
+  end
+  
 
   private
 
