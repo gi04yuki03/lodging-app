@@ -1,10 +1,10 @@
 <%= render "shared/header" %>
 
-<div>
+<div class="container-fiuld reservations">
     <h5>登録済みルーム一覧</h5>
     <table class ="new-main-part">
    <thead>
-     <tr>
+     <tr class="center">
        <th>ルーム画像</th>
        <th>ルーム名</th>
        <th>ルーム紹介</th>
@@ -16,11 +16,11 @@
      <% @posts.each do |post| %>
      <%= link_to post_path(post) do %>
        <tr>
-         <td><%= attachment_image_tag post, :image, format: 'jpeg', size: "100x100" %></td>
+         <td><%= attachment_image_tag post, :image, format: 'jpeg',class: "reservations-image" %></td>
          <td><%= post.user.name %></td>
-         <td><%#= post.user.introduction %></td>
-         <td><%#= post.user.price %></td>
-         <td><%= post.user.updated_at.to_s(:datetime2_jp) %></td>
+         <td><%= post.introduction %></td>
+         <td><%= post.price %></td>
+         <td><%= post.user.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
        </tr>
      <% end %>
      <% end %>
