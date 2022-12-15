@@ -5,7 +5,7 @@
     <div class="container">
     <table class ="new-main-part table-hover">
    <thead>
-     <tr class="center">
+     <tr align="center">
        <th>ルーム画像</th>
        <th>ルーム名</th>
        <th>ルーム紹介</th>
@@ -15,10 +15,10 @@
    </thead>
    <tbody>
      <% @reservations.each do |reservation| %>
-       <tr onclick='window.location="<%= post_path(reservation) %>"' role="link">
+       <tr onclick='window.location="<%= post_path(reservation.post) %>"' role="link" align="center">
          <td><%= attachment_image_tag reservation.post, :image, format: 'jpeg',class: "reservations-image" %></td>
-         <td><%= reservation.post.user.name %></td>
-         <td><%= reservation.post.introduction %></td>
+         <td style="width: 10rem;"><%= reservation.post.user.name %></td>
+         <td class="text-wrap" style="width: 20rem;"><%= reservation.post.introduction %></td>
          <td><%= reservation.post.price %></td>
          <td><%= reservation.post.user.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
        </tr>

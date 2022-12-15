@@ -17,9 +17,10 @@
    <% if @post.errors.any? %>
    <div class="error">
     <%= @post.errors.count %>件のエラーが発生しました
-    <% @post.errors.full_messages.each do |message| %>
-    <%= message %>
+    <ul><% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+    </ul>
    </div>
    <% end %>
    
@@ -45,7 +46,7 @@
        <td><%= f.text_field :address ,class: "form-control my-2 col-md-9" , placeholder: "住所を入力" %></td>
      </tr>
      <tr>
-       <th><%= f.label :image ,"ルーム画像" %><<span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <th><%= f.label :image ,"ルーム画像" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.attachment_field :image ,class: "my-2 col-md-9" %></td>
      </tr>
    </table>

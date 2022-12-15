@@ -3,8 +3,12 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
+      flash[:notice] = "ルームを予約しました"
       redirect_to  action: :show, id: @reservation.id
     else
+      @post = Post.find(@reservation.post.id)  
+      @reservation = Reservation.new
+      flash[:notice] = "予約が失敗しました"
       render template: "posts/show"
     end
   end

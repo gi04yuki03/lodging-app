@@ -76,3 +76,5 @@ gem 'bootstrap4-datetime-picker-rails'
 gem 'momentjs-rails'
 
 gem 'rake', '< 11.0'
+
+gem 'rails-i18n'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_08_111724) do
+ActiveRecord::Schema.define(version: 2022_11_27_095223) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name"
@@ -21,18 +21,6 @@ ActiveRecord::Schema.define(version: 2022_12_08_111724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-  end
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.integer "person_num"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_reservations_on_post_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

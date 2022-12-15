@@ -2,15 +2,23 @@
 
 <div class="col-lg-10 new-main">
    <div class ="new-main-inner px-5 py-4 my-4">
-    <h5>ルーム情報登録</h5>
     <table class ="new-main-part">
      <tr>
-       <th>メールアドレス</th>
-       <td><%= @reservation.person_num %></td>
+       <th>予約した部屋</th>
+       <td><%= @reservation.post.name %></td>
      </tr>
      <tr>
-       <th>パスワード</th>
-       <td>********</td>
+       <th>開始日</th>
+       <td><%= @reservation.start_date.strftime('%Y年%m月%d日') %></td>
+     </tr>
+     <tr>
+       <th>終了日</th>
+       <td><%= @reservation.end_date.strftime('%Y年%m月%d日') %></td>
+     </tr>
+     <tr>
+       <th>価格</th>
+       <% total_price = @reservation.person_num * @reservation.post.price * ((@reservation.end_date - @reservation.start_date)/ 1.days).floor %>
+       <td><%= total_price %></td>
      </tr>
    </table>
    </div>
