@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to  action: :show, id: @reservation.id
     else
-      render posts_path
+      render template: "posts/show"
     end
   end
   

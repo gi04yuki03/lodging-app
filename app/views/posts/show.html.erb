@@ -14,9 +14,9 @@
         <div class = "reserve-form">
           <%= form_for [@post, @post.reservations.new] do |f| %>
             <label for="start_date">開始日</label>
-             <%= f.date_field :start_date %>
+             <%= f.date_field :start_date %><br>
             <label for="end_date">終了日</label>
-            <%= f.date_field :end_date %>
+            <%= f.date_field :end_date %><br>
             <label for="person_num">人数</label>
             <%= f.text_field :person_num %>
             <%= f.submit "予約する", class: "btn btn-primary form-control" %> 

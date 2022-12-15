@@ -29,23 +29,23 @@
   
     <table class ="new-main-part">
      <tr>
-       <th><%= f.label :name ,"ルーム名" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <th><%= f.label :name ,"ルーム名" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.text_field :name ,class: "form-control my-2 col-md-9" , placeholder: "ルーム名を入力"%></td>
      </tr>
      <tr>
-       <th><%= f.label :introduction ,"ルーム紹介" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <th><%= f.label :introduction ,"ルーム紹介" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.text_area :introduction ,class: "form-control my-2 col-md-9" , placeholder: "ルーム説明を入力" %></td>
      </tr>
      <tr>
-       <th><%= f.label :price ,"料金" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <th><%= f.label :price ,"料金" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.text_field :price ,class: "form-control my-2 col-md-9" , placeholder: "一日あたりの料金を入力" %></td>
      </tr>
      <tr>
-       <th><%= f.label :address ,"住所" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <th><%= f.label :address ,"住所" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.text_field :address ,class: "form-control my-2 col-md-9" , placeholder: "住所を入力" %></td>
      </tr>
      <tr>
-       <th><%= f.label :image ,"ルーム画像" %><a class="text-white bg-danger p-2 mx-3">必須</a></th>
+       <th><%= f.label :image ,"ルーム画像" %><<span class="text-white bg-danger p-2 mx-3">必須</span></th>
        <td><%= f.attachment_field :image ,class: "my-2 col-md-9" %></td>
      </tr>
    </table>

@@ -1,31 +1,31 @@
 <%= render "shared/header" %>
 
 <div class="container-fiuld reservations">
-    <h5>登録済みルーム一覧</h5>
-    <table class ="new-main-part">
-   <thead>
+ <h5>登録済みルーム一覧</h5>
+  <div class="container">
+   <table class="new-main-part table-hover">
+    <thead>
      <tr class="center">
-       <th>ルーム画像</th>
-       <th>ルーム名</th>
-       <th>ルーム紹介</th>
-       <th>料金</th>
-       <th>作成日</th>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>ルーム紹介</th>
+      <th>料金</th>
+      <th>作成日</th>
      </tr>
-   </thead>
-   <tbody>
-     <% @posts.each do |post| %>
-     <%= link_to post_path(post) do %>
-       <tr>
-         <td><%= attachment_image_tag post, :image, format: 'jpeg',class: "reservations-image" %></td>
-         <td><%= post.name %></td>
-         <td><%= post.introduction %></td>
-         <td><%= post.price %></td>
-         <td><%= post.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
-       </tr>
-     <% end %>
-     <% end %>
+    </thead>
+    <tbody>
+    <% @posts.each do |post| %>
+    <tr onclick='window.location="<%= post_path(post) %>"' role="link">
+     <td><%= attachment_image_tag post, :image, format: 'jpeg',class: "reservations-image" %></td>
+     <td><%= post.name %></td>
+     <td><%= post.introduction %></td>
+     <td><%= post.price %></td>
+     <td><%= post.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+    </tr>
+    <% end %>
    </tbody>
- </table>
+  </table>
+ </div>
 </div>
    
 <%= render 'shared/footer' %>

@@ -1,40 +1,39 @@
+<%= render "shared/header" %>
+
 <div class="box1">
   <div class="box-inner">
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <h1>新規登録</h1>
+    <p class="mb-5">新しいアカウントを作成</p>
     <div class="box-name">
-      <%= f.label :name, "名前" %><br />
+      <span class="text-white bg-danger p-2 mx-3">必須</span><%= f.label :name, "ユーザー名" %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>
 
     <div class="box-email">
-      <%= f.label :email, "Eメール" %><br />
+      <span class="text-white bg-danger p-2 mx-3">必須</span><%= f.label :email, "Eメール" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="box-password">
-      <%= f.label :password, "パスワード" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+      <span class="text-white bg-danger p-2 mx-3">必須</span><%= f.label :password, "パスワード" %>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
     <div class="box-password">
-      <%= f.label :password_confirmation, "パスワード(確認)" %><br />
+      <span class="text-white bg-danger p-2 mx-3">必須</span><%= f.label :password_confirmation, "パスワード(確認)" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="box-login">
-      <%= f.submit "新規登録" %>
+    <div class="box-login mt-5">
+      <%= f.submit "新しいアカウントを作成" %>
     </div>
     <% end %>
 
-    <div class="box-newusr">
-      <p><span>------------</span> 既に登録されていますか？ <span>------------</span></p>
-      <%= link_to "ログイン", new_user_session_path %>
+    <div>
+      <%= link_to "すでにアカウントをお持ちの方はログイン", new_user_session_path %>
     </div>
   </div>
 </div>
 
+<%= render 'shared/footer' %>
