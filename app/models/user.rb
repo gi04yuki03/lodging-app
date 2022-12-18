@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   
-  validates :profile,:name,:profile_image, presence: true
+  with_options on: :step1 do
+    validates :profile,:name,:profile_image, presence: true
+  end
          
   has_many :posts, dependent: :destroy
   has_many :reservations, dependent: :destroy
