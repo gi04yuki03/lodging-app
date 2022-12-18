@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+
+<div class="new-all container-fiuld">
+ <div class="row">
+  <div class="new-sub col-lg-2 new-sub-pc d-lg-block d-none p-3">
+   <ul>
+     <li class="active float-right"><%= link_to "アカウント", user_path(current_user.id), class: "new-sub-pc-nav text-nowrap p-2 ml-4 text-decoration-none" %></li>
+     <li class="active float-right"><%= link_to "プロフィール", edit_user_path(current_user.id), class: "new-sub-pc-nav-none text-nowrap p-2 ml-4 text-decoration-none" %></li>
+   </ul>
+  </div>
+  <div class="new-sub col-lg-2 new-sub-mobile d-lg-none ml-3">
+   <ul>
+     <li class="active sub-mobile-nav"><%= link_to "アカウント", user_path(current_user.id), class: "new-sub-mobile-nav m-2 pb-2 text-decoration-none" %></li>
+     <li class="active sub-mobile-nav"><%= link_to "プロフィール", edit_user_path(current_user.id), class: "new-sub-mobile-nav-none m-2 pb-2 text-decoration-none" %></li>
+   </ul>
+  </div>
+ <div class="col-lg-10 new-main">
+   <div class ="new-main-inner px-5 py-4 my-4">
+    <h5>ルーム情報登録</h5>
+    <table class ="new-main-part">
+     <tr>
+       <th>メールアドレス</th>
+       <td><%= @user.email %></td>
+     </tr>
+     <tr>
+       <th>パスワード</th>
+       <td>********</td>
+     </tr>
+   </table>
+   </div>
+  </div>
+ </div>
+</div>
+
+<%= render 'shared/footer' %>

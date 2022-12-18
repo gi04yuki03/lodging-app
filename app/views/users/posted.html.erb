@@ -1,0 +1,31 @@
+<%= render "shared/header" %>
+
+<div class="container-fiuld reservations">
+ <h5>登録済みルーム一覧</h5>
+  <div class="container">
+   <table class="new-main-part table-hover">
+    <thead>
+     <tr align="center">
+      <th>ルーム画像</th>
+      <th style="width: 10rem;">ルーム名</th>
+      <th class="text-wrap" style="width: 20rem;">ルーム紹介</th>
+      <th>料金</th>
+      <th>作成日</th>
+     </tr>
+    </thead>
+    <tbody>
+    <% @posts.each do |post| %>
+    <tr onclick='window.location="<%= post_path(post) %>"' role="link" align="center">
+     <td><%= attachment_image_tag post, :image, format: 'jpeg',class: "reservations-image" %></td>
+     <td><%= post.name %></td>
+     <td><%= post.introduction %></td>
+     <td><%= post.price %></td>
+     <td><%= post.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+    </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
+</div>
+   
+<%= render 'shared/footer' %>

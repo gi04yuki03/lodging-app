@@ -1,0 +1,49 @@
+<nav class="navbar bg-dark">
+
+  <div class ="header-logo row">
+    <%= link_to top_path do %>
+      <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="ロゴ画像">
+    <% end %>
+
+  
+  <div class="d-lg-inline-block d-none mt-4 ml-1">
+    <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+    <div><%= f.text_field :area , placeholder:"エリア" %></div>
+  </div>
+  <div class="d-lg-inline-block d-none mt-4 ml-1">
+    <div><%= f.text_field :keyword , placeholder:"キーワード" %></div>
+  </div>
+    <div><%= f.submit '探す', class: "d-lg-inline-block d-none btn btn-primary mb-4 mt-3 px-5 form-button ml-1" %></div>
+    <% end %>
+  </div>
+
+
+  <div class ="header-sub">
+    <% if user_signed_in? %>
+    
+<div class="dropdown"> 
+  <button id="btnOpenMenu" class="btn btn-primary dropdown-toggle mr-4"  
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      メニューを開く
+  </button>
+  <div class="dropdown-menu" aria-labelledby="btnOpenMenu">
+              <button class="dropdown-item" type="button"><%= link_to "ルーム登録", new_post_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "予約済みルーム一覧", reservation_users_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "登録済みルーム一覧", posted_users_path %></button>
+              <button class="dropdown-item" type="button"><%= link_to "マイページ", user_path(current_user.id) %></button>
+              <button class="dropdown-item" type="button"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+ 
+  </div>
+  </div>
+    <% else %>
+        <div>
+           <%= link_to new_user_registration_path do %>
+              <h2 class="btn btn-primary mr-2">新規登録</h2>
+           <% end %>
+           <%= link_to new_user_session_path do %>
+              <h2 class="btn btn-success ml-2">ログイン</h2>
+           <% end %>
+        </div>
+    <% end %>
+  </div>
+</nav>

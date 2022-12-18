@@ -1,0 +1,60 @@
+
+<%= render "shared/header" %>
+<div class="new-all container-fiuld">
+ <div class="row">
+  <div class="new-sub col-lg-2 new-sub-pc d-lg-block d-none p-3">
+   <ul>
+     <li class="active"><a href="/posts/new" class="new-sub-pc-nav text-nowrap p-2 ml-4 text-decoration-none">基本情報</a></li>
+   </ul>
+  </div>
+  <div class="new-sub col-lg-2 new-sub-mobile d-lg-none">
+   <ul>
+     <li class="active sub-mobile-nav"><a href="/posts/new" class="new-sub-mobile-nav m-3 pb-2 text-decoration-none">基本情報</a></li>
+   </ul>
+  </div>
+  
+  <div class="col-lg-10 new-main">
+   <% if @post.errors.any? %>
+   <div class="error">
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul><% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    </ul>
+   </div>
+   <% end %>
+   
+   <div class ="new-main-inner px-5 py-4 my-4">
+   <%= form_with model: @post, local:true do |f| %>
+    <h5>ルーム情報登録</h5>
+  
+    <table class ="new-main-part">
+     <tr>
+       <th><%= f.label :name ,"ルーム名" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <td><%= f.text_field :name ,class: "form-control my-2 col-md-9" , placeholder: "ルーム名を入力"%></td>
+     </tr>
+     <tr>
+       <th><%= f.label :introduction ,"ルーム紹介" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <td><%= f.text_area :introduction ,class: "form-control my-2 col-md-9" , placeholder: "ルーム説明を入力" %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :price ,"料金" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <td><%= f.text_field :price ,class: "form-control my-2 col-md-9" , placeholder: "一日あたりの料金を入力" %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :address ,"住所" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <td><%= f.text_field :address ,class: "form-control my-2 col-md-9" , placeholder: "住所を入力" %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :image ,"ルーム画像" %><span class="text-white bg-danger p-2 mx-3">必須</span></th>
+       <td><%= f.attachment_field :image ,class: "my-2 col-md-9" %></td>
+     </tr>
+   </table>
+   <%= f.submit '投稿' , class: "btn btn-primary mt-3" %>
+   <% end %>
+   </div>
+  </div>
+ </div>
+</div>
+
+<%= render 'shared/footer' %>
