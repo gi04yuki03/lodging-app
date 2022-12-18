@@ -42,7 +42,6 @@ class PostsController < ApplicationController
       @posts = Post.where('price LIKE ? or name LIKE ? or introduction LIKE ? or address LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%").where('address LIKE(?)', "%#{params[:area]}%")
     elsif params[:keyword] != nil
       @posts = Post.where('price LIKE ? or name LIKE ? or introduction LIKE ? or address LIKE ?',"%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%", "%#{params[:keyword]}%")
-    elsif params[:keyword] != nil
     elsif params[:area] != nil
       @posts = Post.where('address LIKE ?', "%#{params[:area]}%")
     else

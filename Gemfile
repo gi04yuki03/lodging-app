@@ -78,3 +78,5 @@ gem 'momentjs-rails'
 gem 'rake', '< 11.0'
 
 gem 'rails-i18n'
+
+gem 'ransack'
